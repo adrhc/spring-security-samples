@@ -56,6 +56,9 @@ public interface ContactManager {
 			+ "hasPermission(#id, 'sample.contact.Contact', admin)")
 	Contact getById(Long id);
 
+	/**
+	 * Comparing to getById(id) this is a security hole because one could get a Contact to which has no access right!
+	 */
 	Contact getRandomContact();
 
 }
