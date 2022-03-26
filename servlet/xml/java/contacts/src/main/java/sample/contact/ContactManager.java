@@ -49,6 +49,9 @@ public interface ContactManager {
 	@PreAuthorize("hasRole('ROLE_USER')")
 	List<String> getAllRecipients();
 
+	/**
+	 * Before calling the method checks whether the current user (aka SecurityContextHolder.getContext().getAuthentication()) has "read" access to a "sample.contact.Contact" (see ACL_CLASS at https://docs.spring.io/spring-security/reference/servlet/authorization/acls.html#domain-acls-key-concepts) identified by #id (which is "id" parameter).
+	 */
 	@PreAuthorize("hasPermission(#id, 'sample.contact.Contact', read) or "
 			+ "hasPermission(#id, 'sample.contact.Contact', admin)")
 	Contact getById(Long id);
